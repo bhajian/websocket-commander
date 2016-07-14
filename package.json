@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "websocket-test",
   "version": "1.0.0",
   "description": "Basic structure for Express web apps.",
   "main": "app.js",
@@ -7,6 +7,7 @@
     "start": "node app.js",
     "test": "node_modules/.bin/mocha tests/**"
   },
+  "start": "app.js",
   "keywords": [
     "base",
     "project",
@@ -18,7 +19,10 @@
   "license": "MIT",
   "dependencies": {
     "websocket": "^1.0.23",
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "cfenv": "*",
+    "ws": "*",
+    "body-parser": "*"
   },
   "devDependencies": {
     "mocha": "^2.2.4"

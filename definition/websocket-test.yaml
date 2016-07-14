@@ -1,0 +1,48 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: websocket-test
+  x-ibm-name: websocket-test
+host: $(catalog.host)
+basePath: /
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+securityDefinitions:
+  clientID:
+    description: ''
+    in: header
+    name: X-IBM-Client-Id
+    type: apiKey
+security:
+  - {}
+x-ibm-configuration:
+  assembly:
+    execute:
+      - set-variable:
+          title: set-variable
+          actions:
+            - set: message.headers.host
+              value: websocket-app-57850f04e4b0213ad7d90907-1468337948141.ibm
+      - invoke:
+          target-url: 'http://ODR-DYN$(request.path)$(request.search)'
+          title: invoke
+          timeout: 60
+          cache-response: protocol
+          cache-ttl: 899
+  gateway: datapower-gateway
+schemes:
+  - ws
+consumes:
+  - application/json
+produces:
+  - application/json
+definitions:
+  test:
+    additionalProperties: false
+  x-any:
+    additionalProperties: false
+    description: ''
